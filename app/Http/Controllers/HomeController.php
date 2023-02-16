@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Chamado;
+use Auth;
+use Illuminate\Support\Facades\Gate;
 
 class HomeController extends Controller
 {
@@ -24,7 +26,28 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $chamados = Chamado::all();
+        $user = Auth::user();
+        $chamados = Chamado::where('user_id','=',$user->id)->get();
         return view('home',compact('chamados'));
     }
+
+    public function detalhe($id)
+    {
+        $chamado = Chamado::find($id);
+        //$this->authorize('ver-chamado',$chamado);
+
+        /*
+        if(Gate::denies('ver-chamado',$chamado)){
+            abort(403," Não autorizado!");
+        }
+        */
+
+        if(Gate::allows('ver-chamado',$chamado)){
+            return view('detalhe',compact('chamado'));
+        }
+
+        abort(403," Não autorizado!");
+
+    }
+
 }
