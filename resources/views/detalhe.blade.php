@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
 
-        @can('ver-chamado',$chamado)
+        @can('view',$chamado)
       <h2>Detalhe de Chamado</h2>
 
       Título: {{$chamado->titulo}}

@@ -15,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Chamado' => 'App\Policies\ChamadoPolicy',
+        'App\Chamado' => 'App\Policies\ChamadoTestePolicy',
     ];
 
     /**
@@ -32,6 +32,6 @@ class AuthServiceProvider extends ServiceProvider
         });
         */
 
-        
+
     }
 }
