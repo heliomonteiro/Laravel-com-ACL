@@ -10,7 +10,7 @@ class ChamadoTestePolicy
 {
     use HandlesAuthorization;
 
-
+    /*
     public function before($user, $ability)
     {
         if ($user->eAdmin())
@@ -18,6 +18,7 @@ class ChamadoTestePolicy
             return true;
         }
     }
+    */
 
     /**
      * Determine whether the user can view the chamado.
@@ -39,7 +40,7 @@ class ChamadoTestePolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
