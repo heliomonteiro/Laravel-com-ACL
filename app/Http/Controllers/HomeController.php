@@ -27,7 +27,8 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $chamados = Chamado::where('user_id','=',$user->id)->get();
+        //$chamados = Chamado::where('user_id','=',$user->id)->get();
+        $chamados = Chamado::all();
         return view('home',compact('chamados'));
     }
 
@@ -40,14 +41,16 @@ class HomeController extends Controller
         if(Gate::denies('ver-chamado',$chamado)){
             abort(403," Não autorizado!");
         }
-        */
+        
 
         if(Gate::allows('ver-chamado',$chamado)){
             return view('detalhe',compact('chamado'));
         }
 
         abort(403," Não autorizado!");
+        */
 
+        return view('detalhe',compact('chamado'));
     }
 
 }

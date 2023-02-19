@@ -33,6 +33,10 @@ class User extends Authenticatable
       return $this->belongsToMany('App\Carro');
     }
 
+    public function eAdmin()
+    {
+      return $this->id == 1;
+    }
 
 
 }
